@@ -1,0 +1,18 @@
+<div class='table-responsive'>
+  <table class='table table-bordered table-striped'>
+    <tr>
+      <th>S.No</th>
+      <th>Student Name</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+    <%@users.each_with_index do |u,i|%>
+      <tr>
+        <td><%=  i+1 %></td>
+        <td><%=  u.name %></td>
+        <td><%=  u.email %></td>
+        <td><%=  link_to "Delete",admin_student_path(u,:admin_id => current_admin.id),:method => :delete,:data => {:confirm => "are you sure"},:class=>"btn btn-danger"%></td>
+      </tr>
+    <%end%>
+  </table>
+  <div>

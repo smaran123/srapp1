@@ -1,0 +1,27 @@
+<%= nested_form_for @batch, :url =>  admin_batches_path,:html => {:multipart => true }, :method => "POST" do |f| %>
+
+  <div class="control-group">  
+    <label class="control-label" for="input01">Class</label>  
+    <div class="controls">  
+      <%=f.text_field :batch_name%> 
+    </div>  
+  </div> 
+
+
+  <div class="control-group">
+    <label>Subject</label>
+    <%= f.fields_for :subjects do |sub| %>
+       <%= sub.text_field :subject_name %>
+      <%= sub.link_to_remove image_tag("remove.png") %>
+    <% end %>
+    <p><%= f.link_to_add image_tag("add.jpeg"), :subjects %>
+    </p>
+  </div>
+
+
+
+
+  <div class="form-actions">  
+    <%= f.submit "Submit" ,:class=>"btn btn-primary" %>
+  </div>
+<%end%>
