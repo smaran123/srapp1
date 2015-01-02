@@ -4,6 +4,7 @@
       <th>S.No</th>
       <th>Student Name</th>
       <th>Email</th>
+      <th>Batch Name</th>
       <th>Actions</th>
     </tr>
     <%@users.each_with_index do |u,i|%>
@@ -11,6 +12,7 @@
         <td><%=  i+1 %></td>
         <td><%=  u.name %></td>
         <td><%=  u.email %></td>
+        <td><%#=  u.batch.batch_name  %> </td>
         <td><%=  link_to "Delete",admin_student_path(u,:admin_id => current_admin.id),:method => :delete,:data => {:confirm => "are you sure"},:class=>"btn btn-danger"%></td>
       </tr>
     <%end%>

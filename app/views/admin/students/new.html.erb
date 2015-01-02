@@ -1,4 +1,4 @@
-<div id="Tweet-summary" style="float: left;left: 400px;position: absolute;top: 52px;width: 35%;">
+<div>
   <div id="title">Send Invitation To Student</div><br />
   <%=  form_for(@user, :url =>   admin_students_path(@user, :admin_id => current_admin.id), :html => { :multipart => true }) do |f|%>
     <table>
@@ -9,6 +9,11 @@
       <tr>
         <td valign="top">Email:</td>
         <td><%= f.text_field :email %></td>
+      </tr>
+      <tr>
+        <td valign="top">Class:</td>
+        <td><%= select_tag :batch_id,  options_for_select([["Select", ""]] + Batch.all.map{|i| [i.batch_name,i.id]}) %></td>
+      </tr>
       </tr>
       <tr>
         <td></td>

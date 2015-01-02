@@ -7,6 +7,8 @@ class Admin::StudentsController < ApplicationController
 
   def index
     @users = User.all
+    @batches = Batch.all
+    
   end
   
   def create
@@ -16,7 +18,6 @@ class Admin::StudentsController < ApplicationController
     @user.password_confirmation = 'ashok123'
     if @user.save
       @user.send_reset_password_instructions
-
       redirect_to  admin_dashboards_path
     else
       flash[:error] = "Failed to Send Invitation"

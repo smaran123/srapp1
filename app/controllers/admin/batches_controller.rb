@@ -16,6 +16,7 @@ class Admin::BatchesController < ApplicationController
   def create
     #  @admin = Admin.find(params[:admin_id])
     @batch = Batch.new(batch_params)
+    @batch.admin_id = current_admin.id
     if @batch.save
       flash[:notice] = "class is created"
       redirect_to admin_batches_path
