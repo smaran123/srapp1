@@ -6,14 +6,23 @@ Rails.application.routes.draw do
   root 'homes#index'
   #  match 'users/create' => "users#create",:as => :create_user,:via => [:post]
   resources :homes
- namespace :web_admin do
-   resources :dashboards
- end
- namespace :admin do
-   resources :dashboards
-   resources :students
-   resources :batches
- end
+  namespace :web_admin do
+    resources :dashboards
+  end
+  namespace :admin do
+    resources :dashboards
+    resources :students do
+      collection do
+        get :assign_subject
+      end
+      member do
+        get :assign_class
+        post :assign_teacherclass
+      end
+    end
+    resources :batches
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

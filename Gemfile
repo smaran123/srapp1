@@ -19,7 +19,8 @@ group :development do
 end
 gem "binding_of_caller"
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
-gem 'devise'
+gem 'devise' 
+gem 'bootstrap-multiselect-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

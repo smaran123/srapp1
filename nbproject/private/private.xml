@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/rails/mywork/srapp/app/views/admin/students/new.html.erb</file>
-            <file>file:/home/rails/mywork/srapp/app/controllers/admin/students_controller.rb</file>
-            <file>file:/home/rails/mywork/srapp/app/mailers/user_mailer.rb</file>
-            <file>file:/home/rails/mywork/srapp/app/controllers/admin/dashboards_controller.rb</file>
-            <file>file:/home/rails/mywork/srapp/config/routes.rb</file>
-            <file>file:/home/rails/mywork/srapp/app/controllers/application_controller.rb</file>
-            <file>file:/home/rails/mywork/srapp/app/views/user_mailer/user_link.html.erb</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

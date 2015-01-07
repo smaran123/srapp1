@@ -10,11 +10,10 @@ class Admin::BatchesController < ApplicationController
   
   def index
     @batches = Batch.all
-    
   end
   
   def create
-    #  @admin = Admin.find(params[:admin_id])
+    # @admin = Admin.find(params[:admin_id])
     @batch = Batch.new(batch_params)
     @batch.admin_id = current_admin.id
     if @batch.save
