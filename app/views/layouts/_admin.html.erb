@@ -56,7 +56,7 @@
           <ul class="nav pull-right">
             Welcome &nbsp;
             <%=  current_admin.name%>
-            <%= link_to "Logout", destroy_admin_session_path,:method => :delete, :data => {:confirm => "are you sure"},:class => "btn btn-danger" %>
+            <%= link_to "Logout", destroy_admin_session_path,:method => :delete,:class => "btn btn-danger" %>
           </ul>       
         <%else%>
           <%= link_to "Signin", new_admin_session_path %>

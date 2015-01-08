@@ -12,7 +12,7 @@
         <td><%=  u.name %></td>
         <td><%=  u.email %></td>
         <td>
-<%=  link_to "Delete",admin_student_path(u,:admin_id => current_admin.id),:method => :delete,:data => {:confirm => "are you sure"},:class=>"btn btn-danger"%>
+  <%=  link_to "Delete",admin_student_path(u,:admin_id => current_admin.id),:method => :delete,:data => {:confirm => "are you sure"},:class=>"btn btn-danger"%>
  <%=  link_to "Assign", assign_class_admin_student_path(u,:admin_id=>current_admin.id), :class => "btn btn-default" %>
         </td>
       </tr>

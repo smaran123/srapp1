@@ -34,14 +34,22 @@ class Admin::StudentsController < ApplicationController
   end
   
   def assign_class
-    #  @admin = Admin.find(params[:admin_id])
+    @admin = Admin.find(params[:admin_id])
     @user = User.find(params[:id])
+    @batch = Batch.find(params[:id])
     @user.admin_id = current_admin.id
     @assign_class = StudentsBatch.new
+    @subject = Subject.find(params[:id])
+    puts "**********************"
+    puts @user.inspect
+    puts @admin.inspect
+    puts @batch.inspect
+    puts @subject.inspect
+    puts "*********"
   end
   
   def assign_teacherclass
-       @user.admin_id = current_admin.id
+    #      @user.admin_id = current_admin.id
     if params[:subject_ids]
       params[:subject_ids].compact.each do |ami|
         @batch = StudentsBatch.find_by_batch_id_and_subject_id(params[:batch_id],ami)
@@ -52,16 +60,16 @@ class Admin::StudentsController < ApplicationController
         end
       end
     end
-    flash[:notice] = "Successfully assign Subject to Teacher"
+    flash[:notice] = "Successfully assign Subject to User"
     redirect_to  admin_students_path
   end
   
   def assign_subject
-    @subjects = Subject.where("assign is null and batch_id = ?", params[:batch_id])
+    @subjects = Subject.where("batch_id = ?", params[:batch_id])
   end
   
   private
-   def user_params
+  def user_params
     params.require(:user).permit!
   end
 end

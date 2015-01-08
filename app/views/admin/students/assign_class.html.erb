@@ -1,8 +1,8 @@
 <%= form_for @assign_class, :url=>assign_teacherclass_admin_student_path(@user.admin_id,@user.id) do |f| %>
   <div class="column">
     <p> <label> Class: </label>                                                                                                                                                   
-      <%= f.select :batch_id, options_for_select([["Select", ""]] + Batch.all.map{|ic| [ic.batch_name,ic.id]}), :onchange => "GetSubjects(this.value)", :class => "form-control" %>
-<%#= select_tag :batch_id,  options_for_select([["Select", ""]] + Batch.where("admin_id=?",current_admin.id).map{|ic| [ic.batch_name,ic.id]}), :onchange => "GetSubjects(this.value)" %>
+      <%#= f.select :batch_id, options_for_select([["Select", ""]] + Batch.all.map{|ic| [ic.batch_name,ic.id]}), :onchange => "GetSubjects(this.value)", :class => "form-control" %>
+  <%= select_tag :batch_id,  options_for_select([["Select", ""]] + Batch.where("admin_id=?",current_admin.id).map{|ic| [ic.batch_name,ic.id]}), :onchange => "GetSubjects(this.value)" %>
     </p>
   </div>
   <div class="column" id="subjects">
@@ -12,6 +12,20 @@
   </div>
   <%= f.submit "Save" %>
 <% end %>
+<script>
+  function GetSubjects(sub) {
+    alert("DSFDSFSDFDF")
+    $.ajax({
+      url: "/admin/students/assign_subject",
+      method: "GET",
+      dataType: "script",
+      success: function(data) {
+
+      }
+    });
+  }
+</script>
+
 
 
 

@@ -15,15 +15,3 @@
 //= require jquery_nested_form
 //= require turbolinks
 //= require_tree .
-
-
-function GetSubjects(sub) {
-  $.ajax({
-    url: "/subjects/" + sub + "/assign_subject/",
-    method: "GET",
-    dataType: "script",
-    success: function(data) {
-
-    }
-  });
-}

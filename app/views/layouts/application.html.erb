@@ -10,15 +10,13 @@
     <div class="navbar navbar-fluid-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-       
-            <% if current_web_admin %>
-              <%= render :partial => "layouts/web_admin" %>
-            <%elsif current_admin %>
-              <%= render :partial => "layouts/admin" %>
-            <%else current_user%>
-              <%= render :partial => "layouts/user" %>
-            <%end%>
-      
+          <% if current_web_admin %>
+            <%= render :partial => "layouts/web_admin" %>
+          <%elsif current_admin %>
+            <%= render :partial => "layouts/admin" %>
+          <%else current_user%>
+            <%= render :partial => "layouts/user" %>
+          <%end%>
         </div>   
       </div><!--/.nav-collapse -->
     </div>
