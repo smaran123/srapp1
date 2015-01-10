@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107072549) do
+ActiveRecord::Schema.define(version: 20150110100205) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 20150107072549) do
     t.integer  "batch_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
     t.string   "assign"
   end
 

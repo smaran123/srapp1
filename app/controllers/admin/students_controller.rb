@@ -61,7 +61,8 @@ class Admin::StudentsController < ApplicationController
   
 
   def assign_subject
-    @subjects = Subject.where("assign is null and batch_id = ?", params[:batch_id])
+  #  @subjects = Subject.where("assign is null and student_id = ?", params[:student_id])
+    @subjects = Subject.where("assign is null and batch_id = ?", params[:student_id])
   end
   
   private

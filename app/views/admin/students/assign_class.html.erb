@@ -12,20 +12,17 @@
   </div>
   <%= f.submit "Save" %>
 <% end %>
+
 <script>
+    
   function GetSubjects(sub) {
-    alert("DSFDSFSDFDF")
-    $.ajax({
-      url: "/admin/students/assign_subject",
-      method: "GET",
-      dataType: "script",
-      success: function(data) {
+  $.ajax({
+    url: "/admin/students/" + sub + "/assign_subject/",
+    method: "GET",
+    dataType: "script",
+    success: function(date) {
 
-      }
-    });
-  }
+    }
+  });
+}
 </script>
-
-
-
-

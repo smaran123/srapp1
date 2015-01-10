@@ -3,11 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/rails/mywork/srapp/app/views/admin/students/_subjects.html.erb</file>
             <file>file:/home/rails/mywork/srapp/app/controllers/admin/students_controller.rb</file>
-            <file>file:/home/rails/mywork/srapp/app/views/admin/students/assign_class.html.erb</file>
-            <file>file:/home/rails/mywork/srapp/app/models/admin.rb</file>
-            <file>file:/home/rails/mywork/srapp/config/routes.rb</file>
         </group>
     </open-files>
 </project-private>

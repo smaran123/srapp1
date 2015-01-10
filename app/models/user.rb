@@ -3,9 +3,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
-  belongs_to :admin
+  belongs_to :admin 
+  has_many :subjects,:dependent => :destroy
   #  has_one :batch, :dependent => :destroy
-  has_many :subjects, :dependent => :destroy
   has_many :students_batches
   has_many :batches, through: :students_batches
 end
+

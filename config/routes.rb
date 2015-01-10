@@ -12,9 +12,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :dashboards
     resources :students do
-      collection do
         get :assign_subject
-      end
       member do
         get :assign_class
         post :assign_teacherclass
