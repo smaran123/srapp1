@@ -8,6 +8,7 @@ class Admin::StudentsController < ApplicationController
   def index
     @users = User.all
     # @batches = Batch.all
+     @assign_class = StudentsBatch.new
   end
   
   def create
@@ -34,7 +35,7 @@ class Admin::StudentsController < ApplicationController
   end
  
   def assign_class
-    @admin = Admin.find(params[:admin_id])
+  #  @admin = Admin.find(params[:admin_id])
     @user = User.find(params[:id])
     @user.admin_id = current_admin.id
     @assign_class = StudentsBatch.new
@@ -52,6 +53,9 @@ class Admin::StudentsController < ApplicationController
           @subject= StudentsBatch.new(:batch_id => params[:batch_id],:subject_id => ami,:admin_id => params[:admin_id],:user_id => params[:id]) 
           @subject.save
           @subject.subject.update_attribute(:assign, "Assigned")
+          respond_to do |format|
+            format.js
+          end
         end
       end
     end
@@ -61,7 +65,7 @@ class Admin::StudentsController < ApplicationController
   
 
   def assign_subject
-  #  @subjects = Subject.where("assign is null and student_id = ?", params[:student_id])
+    #  @subjects = Subject.where("assign is null and student_id = ?", params[:student_id])
     @subjects = Subject.where("assign is null and batch_id = ?", params[:student_id])
   end
   

@@ -1,0 +1,46 @@
+
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <%=link_to "&times;".html_safe, "#", :onclick => "hide_popup()", :class => "close" %>
+    </div>
+    <div class="modal-body">
+      <%=@user.name%> 
+      <%= @user.email %>
+      <%= form_for @assign_class, :url=>assign_teacherclass_admin_student_path(@user.id, admin_id: @user.admin_id), :html => {:method => :post}, :remote => true do |f| %>
+        <div class="column">
+          <p> <label> Class: </label>                                                                                                                                                   
+  <%#= f.select :batch_id, options_for_select([["Select", ""]] + Batch.all.map{|ic| [ic.batch_name,ic.id]}), :onchange => "GetSubjects(this.value)", :class => "form-control" %>
+            <%= select_tag :batch_id,  options_for_select([["Select", ""]] + Batch.where("status is null and admin_id=?",current_admin.id).map{|ic| [ic.batch_name,ic.id]}), :onchange => "GetSubjects(this.value)" %>
+          </p>
+        </div>
+        <div class="column" id="subjects">
+          <p> <label> Subject: </label>
+            <%=  select_tag :subjects, options_for_select([["Select", ""]])%>
+          </p>
+        </div>
+        <%= f.submit "Assign" %>
+        <%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function GetSubjects(sub) {
+      $.ajax({
+        url: "/admin/students/" + sub + "/assign_subject/",
+        method: "GET",
+        dataType: "script",
+        data: {
+          batch_id: sub
+        },
+        success: function(date) {
+
+        }
+      });
+    }
+  </script>
+
+

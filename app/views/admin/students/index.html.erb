@@ -13,9 +13,32 @@
         <td><%=  u.email %></td>
         <td>
   <%=  link_to "Delete",admin_student_path(u,:admin_id => current_admin.id),:method => :delete,:data => {:confirm => "are you sure"},:class=>"btn btn-danger"%>
- <%=  link_to "Assign", assign_class_admin_student_path(u,:admin_id=>current_admin.id), :class => "btn btn-default" %>
-        </td>
+<%=  link_to "Assign","#", :onclick => "assign_class_admin_student(#{u.id})", :class => "btn btn-default" %>        </td>
       </tr>
     <%end%>
   </table>
   </div>
+<script>
+  function assign_class_admin_student(user) {
+    $.ajax({
+        url: '/admin/students/' + user + '/assign_class/',
+        success: function(data) {
+            $("#popup_body").html(data);
+            $("#popup_box").show();
+            $("#overlay").show();
+        }
+    });
+}
+function hide_popup() {
+    if (jQuery('#popup_box')) {
+        jQuery("#popup_body").html("");
+        jQuery("#popup_box").hide();
+    }
+    if (jQuery("#overlay")) {
+        jQuery("#overlay").hide();
+    }
+}
+</script>
+
+    
+
