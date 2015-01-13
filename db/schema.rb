@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110100205) do
+ActiveRecord::Schema.define(version: 20150107072549) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20150110100205) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "web_admin_id"
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(version: 20150110100205) do
     t.integer  "batch_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
     t.string   "assign"
   end
 

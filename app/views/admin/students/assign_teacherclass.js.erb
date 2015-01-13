@@ -1,7 +1,6 @@
- 
-<% if @assign_class.errors.present? %>
+ <% if @assign_class.errors.present? %>
   $("#assign_class").html('<%= escape_javascript render :partial => 'assign_class' %>');
 <% else %>
-  location.reload();
+ window.location.reload();
 <% end %>
  

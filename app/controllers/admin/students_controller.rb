@@ -41,8 +41,7 @@ class Admin::StudentsController < ApplicationController
     @assign_class = StudentsBatch.new
        render :layout => false
   end
- 
- 
+  
   def assign_teacherclass
     @user = User.find(params[:id])
     @admin = Admin.find(params[:admin_id])
@@ -50,28 +49,27 @@ class Admin::StudentsController < ApplicationController
     if params[:subject_ids]
       params[:subject_ids].compact.each do |ami|
         @assign_class = StudentsBatch.find_by_batch_id_and_subject_id(params[:batch_id],ami)
-        if !@batch.present? and ami.present? 
-         @assign_class= StudentsBatch.new(:batch_id => params[:batch_id],:subject_id => ami,:admin_id => params[:admin_id],:user_id => params[:id]) 
+        if !@assign_class.present? and ami.present? 
+          @assign_class= StudentsBatch.new(:batch_id => params[:batch_id],:subject_id => ami,:admin_id => params[:admin_id],:user_id => params[:id]) 
           @assign_class.save
           @assign_class.subject.update_attribute(:assign, "Assigned")
-          respond_to do |format|
-            format.js
-          end
         end
       end
     end
     flash[:notice] = "Successfully assign Subject to User"
-     end
+  end
   
-
+  
   def assign_subject
-    #  @subjects = Subject.where("assign is null and student_id = ?", params[:student_id])
+    #  @subjects = Subject.where("assign is null and batch_id = ?", params[:student_id])
     @subjects = Subject.where("assign is null and batch_id = ?", params[:student_id])
   end
   
   private
+ 
   def user_params
     params.require(:user).permit!
   end
+  
 end
 
