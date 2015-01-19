@@ -9,7 +9,7 @@ class Admin::BatchesController < ApplicationController
   end
   
   def index
-    @batches = Batch.all
+    @batches = Batch.where("admin_id = #{current_admin.id}")
   end
   
   def create
