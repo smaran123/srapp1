@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   #  match 'users/create' => "users#create",:as => :create_user,:via => [:post]
   resources :homes
   namespace :web_admin do
-    resources :dashboards
+    resources :dashboards 
+    resources :schools
   end
   namespace :admin do
     resources :dashboards
@@ -17,8 +18,10 @@ Rails.application.routes.draw do
         get :assign_class
         post :assign_teacherclass
       end
-    end
-    resources :batches
+    end 
+    resources :attendances
+    resources :batches 
+    resources :markreports
   end
   
   # The priority is based upon order of creation: first created -> highest priority.

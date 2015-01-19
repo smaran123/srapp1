@@ -1,0 +1,51 @@
+<div class="modal-body">
+  <ul class="errors"></ul>
+  <%= hidden_field_tag :user_id,@user_id %>
+  <%= hidden_field_tag :admin_id,@admin_id %>
+  <%= hidden_field_tag :batch_id,@batch_id %>
+  <%= hidden_field_tag :subject_id,@subject_id %>
+  <%#= hidden_field_tag :receiver_id,@receiver_id %>
+<div class="control">
+<%= f.select :batch_id, options_for_select([["Select", ""]] + Batch.all.map{|batch| [batch.batch_name,batch.id]}) %> 
+</div> </br>
+
+<div class="control">
+<%= f.select :subject_id, options_for_select([["Select", ""]] + Subject.all.map{|subject| [subject.subject_name,subject.id]}) %> 
+</div> </br>
+
+<div class="control">
+<%= f.select :user_id, options_for_select([["Select", ""]] + User.all.map{|user| [user.name,user.id]}) %> 
+</div> </br>
+
+  <div class="control-group">
+    <%= f.label :pass_marks, class:"control-label" %>
+      <div class="controls">
+        <%= f.text_field :min_marks %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :marks_obtained, class: "control-label" %>
+        <div class="controls">
+          <%= f.text_field :max_marks %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :total_marks, class: "control-label" %>
+          <div class="controls">
+            <%= f.text_field :total_marks %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :comment, class: "control-label" %>
+            <div class="controls">
+              <%= f.text_area :comment,:rows=>2,:cols=>8 %>
+            </div>
+          </div>
+                   </div>
+          <div class="modal-footer">
+            <%= f.submit class: "btn btn-primary" %>
+              <%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+              </div>
+
+
+

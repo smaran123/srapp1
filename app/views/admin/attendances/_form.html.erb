@@ -1,0 +1,31 @@
+<div class="modal-body">
+  <ul class="errors"></ul>
+  <%= hidden_field_tag :user_id,@user_id %>
+  <%= hidden_field_tag :admin_id,@admin_id %>
+  <%= hidden_field_tag :batch_id,@batch_id %>
+  <%= hidden_field_tag :subject_id,@subject_id %>
+  <%= hidden_field_tag :receiver_id,@receiver_id %>
+
+  <div class="control-group">
+    <label class="control-label"> Attendence :</label>
+    <div class="controls">
+      <%= f.select :user_id,options_for_select([["Select", ""]] + User.all.map{|user|[user.name,user.id]}) %>
+<div class="controls">
+      <%= f.select :batch_id,options_for_select([["Select", ""]] + Batch.all.map{|batch|[batch.batch_name, batch.id]}) %> 
+      </div> 
+      <div class="controls">
+  <%= f.select :subject_id,options_for_select([["Select", ""]] + Subject.all.map{|subject|[subject.subject_name, subject.id]}) %>
+</div>
+      <label class="radio">
+        <%= f.radio_button :attendance_status,"present"%> Present
+      </label>
+      <label class="radio">
+        <%= f.radio_button :attendance_status,"absent"  %> Absent
+      </label>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <%= f.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+ </div>

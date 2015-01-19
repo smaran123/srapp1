@@ -1,0 +1,35 @@
+
+<div class="nav pull-right">
+  <%= form_tag web_admin_dashboards_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+  <% end %>
+</div>
+
+<table class = "table table-stripped">
+  <tr> 
+    <th></th>
+    <th><%= sortable "created_at","Date"%> </th>
+    <th><%=  sortable "name","Client Admin" %></th>
+    <th><%= sortable "email","Email Id" %></th>
+    <th><%= sortable "school_name", "Institute Name"%></th>
+    <th>Actions</th>
+  </tr>
+  <% @admins.each_with_index do |admin,index|  %>
+    <tr>
+      <th><%= index+1%> </th>
+      <th><%= admin.created_at.strftime("%d/%m/%Y")%> </th>
+      <td><%= admin.name %> </td>
+      <td> <%= admin.email %> </td>
+      <td><%= admin.school_name%> </td>
+      <td> <%= link_to "Delete", web_admin_dashboard_path(admin,:web_admin_id => current_web_admin.id),:method => :delete, :data => {:confirm => "are you sure"},:class=>"btn btn-danger"%> </td>
+    </tr>
+  <%end%>
+</table>
+
+<%= will_paginate @admins %>
+
+
+

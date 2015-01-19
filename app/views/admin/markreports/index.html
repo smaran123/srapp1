@@ -1,0 +1,39 @@
+<h4><%#= @user_name.name.capitalize  %> Mark Reports</h4>
+<% if @marks_reports.present? %>
+  <table class="table table-striped" style="background:white;">
+    <tr>
+      <th>Pass Marks</th>
+      <th>Marks Obtained</th>
+      <th>Total Marks</th>
+      <th>Comment</th>
+      <th>User Name </th>
+         <th>Actions</th>
+    </tr>
+    <% @marks_reports.each do |m| %>
+      <tr>
+        <td>
+          <%= m.min_marks %>
+        </td>
+        <td>
+          <%= m.max_marks %>
+        </td>
+        <td>
+          <%= m.total_marks %>
+        </td>
+        <td>
+          <%= m.comment %>
+        </td> 
+        <td>
+        <%= m.user.name %>
+        </td> 
+       
+        <td>
+          <%= link_to "Edit", edit_admin_markreport_path(m),:class => "btn btn-primary"%> |
+          <%= link_to "Delete",  admin_markreport_path(m),:method=> "delete" ,:data => {:confirm => "Are you sure?"},:class => "btn btn-danger"%>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <span style="color: red;position: relative;top: 1px;">No Mark Reports</span>
+<% end %>

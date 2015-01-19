@@ -1,0 +1,10 @@
+<div class="modal-header">
+  <h3>Edit Mark List</h3>
+</div>
+<%= form_for @mark_report, :url => admin_markreport_path, :method => "PUT" do |f| %> 
+
+  <%= render :partial=>'form',:locals => {:f=>f} %>
+<% end %>
+
+
+

@@ -1,0 +1,2 @@
+module WebAdmin::SchoolsHelper
+end

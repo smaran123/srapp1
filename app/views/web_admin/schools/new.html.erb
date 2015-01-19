@@ -1,0 +1,24 @@
+<div>
+  <div id="title">Send Invitation To Admin</div><br />
+  <%=  form_for(@admin, :url =>  web_admin_schools_path(@admin, :web_admin_id => current_web_admin.id), :html => { :multipart => true }) do |f|%>
+    <div class="inner-addon left-addon">
+      <i class="fa fa-user"></i>
+      <%= f.text_field :name, :class => "form-control", :placeholder => "Name"  %>
+    </div>
+    <br/>
+    
+      <div class="inner-addon left-addon">
+      <i class="fa fa-envelope "></i>	
+      <%= f.text_field :email, :class => "form-control", :placeholder => "Email"  %>
+          </div> <br/>
+    
+    <div class="inner-addon left-addon">
+      <i class="fa fa-envelope "></i>	
+  <%= f.text_field :school_name, :class => "form-control", :placeholder => "SchoolName"%>
+    </div> <br/>
+
+    <%= f.submit :class => "btn btn-warning", :id => "submitsignup" %>
+  <br />	
+ <% end %>
+</div>
+

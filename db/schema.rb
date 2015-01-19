@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107072549) do
+ActiveRecord::Schema.define(version: 20150119081909) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -38,10 +38,23 @@ ActiveRecord::Schema.define(version: 20150107072549) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "web_admin_id"
+    t.string   "school_name"
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
+
+  create_table "attendances", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "batch_id"
+    t.integer  "subject_id"
+    t.integer  "receiver_id"
+    t.integer  "admin_id"
+    t.string   "attendance_status"
+    t.date     "today_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "batches", force: true do |t|
     t.string   "batch_name"
@@ -50,6 +63,24 @@ ActiveRecord::Schema.define(version: 20150107072549) do
     t.integer  "admin_id"
     t.integer  "user_id"
     t.string   "status"
+  end
+
+  create_table "mark_reports", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "admin_id"
+    t.integer  "batch_id"
+    t.integer  "subject_id"
+    t.integer  "receiver_id"
+    t.integer  "min_marks"
+    t.integer  "max_marks"
+    t.integer  "total_marks"
+    t.string   "result"
+    t.text     "comment"
+    t.string   "markrepot_file_name"
+    t.string   "markrepot_content_type"
+    t.integer  "markrepot_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "students_batches", force: true do |t|
